@@ -1,0 +1,62 @@
+nav{
+  margin-bottom: 50px;
+}
+
+.justify-btw p{
+  font-weight: 500;
+}
+.new, .popular, .for-you {
+  margin: 30px 0;
+}
+
+/* Games  */
+#category-games {
+ margin: 25px 0;
+}
+.games-container{
+  display: flex;
+
+}
+.item {
+  display: inline-block;
+  position: relative;
+  padding:10px;
+  /* margin: 5px; */
+  border-radius: 20px;
+  -webkit-transition: 0.2s ease-in-out 0s;
+	-moz-transition   : 0.2s ease-in-out 0s;
+	-o-transition     : 0.2s ease-in-out 0s;
+}
+
+.item:hover {
+  -webkit-box-shadow: inset 0px 0px 12px -2px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: inset 0px 0px 12px -2px rgba(0, 0, 0, 0.13);
+  box-shadow: inset 0px 0px 12px -2px rgba(0, 0, 0, 0.13);
+}
+
+.item-img{
+  width: 130px;
+  height:130px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+.item >p{
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.flex{
+  color: grey;
+  font-size: 12px;
+  align-items: center;
+}
+.flex p:first-child{
+  margin-right: 7px;
+  color: #000;
+}
+
+.star{
+  display: flex;
+  align-items: center;
+  margin-right: 7px;
+}
