@@ -1,0 +1,39 @@
+/* nav{
+  position: static;
+} */
+
+.visible{
+  display: block;
+}
+.search-bar-cont{
+  margin: 20px 0;
+}
+.search-bar{
+  display: flex;
+  place-items: center;
+  margin-top: 10px;
+}
+.goback-search{
+  margin-right: 10px;
+}
+.search{
+  padding: 10px;
+  background-color: #F5F5F5;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.search-input{
+  background: none;
+  margin-left: 5px;
+  outline: none;
+  width: 100%;
+}
+.tags{
+  color: #000;
+  padding: 5px 10px;
+  background-color: #F3F3F3;
+  margin-right: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+}
