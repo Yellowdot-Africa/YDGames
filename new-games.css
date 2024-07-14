@@ -1,0 +1,64 @@
+
+/* NEW GAME CONTENTS */
+
+.see-all{
+  font-size: 14px;
+  font-weight: 300;
+}
+.new-game-section{
+  margin-top: 30px;
+}
+
+.hot-doggeria{
+  display: block;
+  position: relative;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 1);
+  height: 220px;
+  color: #ffffff;
+}
+.hot-doggeria > img{
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  object-fit: cover;
+}
+.new-game-desc{
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 10px;
+}
+.item {
+  display: inline-block;
+  position: relative;
+  height: 128px;
+  width: 128px;
+  margin: 2px 5px;
+  border-radius: 10px;
+  -webkit-transition: 0.2s ease-in-out 0s;
+	-moz-transition   : 0.2s ease-in-out 0s;
+	-o-transition     : 0.2s ease-in-out 0s;
+}
+.item img{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.item:hover {
+  -webkit-box-shadow: inset 0px 0px 12px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 0px 12px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 0px 12px -2px rgba(0, 0, 0, 0.75);
+}
+
+.item1{
+  background: linear-gradient(#AC83FC00);
+}
+.item2{
+  background: linear-gradient(#2C9072, #83FCA500);
+}
+.item3{
+  background: #6EE8C3;
+}

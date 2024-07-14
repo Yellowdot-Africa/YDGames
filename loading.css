@@ -1,0 +1,89 @@
+/* body{
+  background-color: #000;
+} */
+.page-container{
+  background-color: #000;
+  height: 100vh;
+  color: #fff;
+  padding: 0 30px;
+}
+.page{
+  text-align: center;
+  width: 100%;
+  margin: 40% auto 30%;
+}
+.loading-text{
+  margin-bottom: 100px;
+}
+.relative{
+  position: relative;
+}
+.img1, .img2{
+  position: absolute;
+}
+.img1{
+  right: 30px;
+  bottom: 10px;
+}
+.img2{
+  left: 30px;
+  bottom: 5px;
+  z-index: 0;
+}
+
+h2{
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 38px;
+  margin: 100px 0 30px;
+  z-index: 2;
+}
+.text{
+  font-size: 16px;
+  line-height: 21px;
+  color: #fff;
+}
+/* .indicator p{
+    font-size: 80px;
+    color: #D6D6D6;
+  } */
+
+button:last-child{
+  border: 1px solid #5C5C5C;
+  padding: 1px 20px;
+  border-radius: 50px;
+}
+
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.loading-text {
+  animation: fadeInOut 3s ease-in-out infinite;
+}
+
+@keyframes moveUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.loading-text {
+  animation: fadeInOut 3s ease-in-out infinite, moveUpDown 3s ease-in-out infinite;
+}
+
+@keyframes moveIndicator {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100vw); } /* 100vw ensures the element moves across the full viewport width */
+}
+
+.indicator img {
+  animation: moveIndicator 3s linear infinite;
+  position: absolute; /* Ensure the element can move freely */
+  left: 0;
+  top: 70%; /* Center vertically if needed */
+  transform: translateY(-50%); /* Center vertically */
+}
+
+
