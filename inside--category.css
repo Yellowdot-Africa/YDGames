@@ -1,3 +1,12 @@
+:root {
+  --primary-color:#ffffff;
+  --secondary-color:#000000;
+}
+
+.dark-theme {
+  --primary-color:#000000;
+  --secondary-color:#ffffff;
+}
 nav{
   margin-bottom: 50px;
 }
@@ -52,7 +61,7 @@ nav{
 }
 .flex p:first-child{
   margin-right: 7px;
-  color: #000;
+  color: var(--secondary-color);
 }
 
 .star{

@@ -60,6 +60,20 @@
   border-style: solid;
 }
 
+:root {
+  --primary-color:#ffffff;
+  --secondary-color:#000000;
+}
+
+.dark-theme {
+  --primary-color:#000000;
+  --secondary-color:#ffffff;
+}
+
+/* .dark-theme .logo {
+  content: url(assets/ydgameswhite.svg);
+} */
+
 html {
   line-height: 1.15;
   scroll-behavior: smooth;
@@ -79,6 +93,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: background-color 0.5s ease, color 0.5s ease;
+
 }
 
 p,
@@ -99,9 +115,16 @@ figcaption {
   padding: 0;
 }
 
+p,
+h1,
+h2,
+h3{
+  color: var(--secondary-color);
+}
+
 button {
   background-color: transparent;
-  color: #fff;
+  color: var(--primary-color);
 }
 
 button,
@@ -238,7 +261,7 @@ input {
   animation: spin 2s linear infinite;
 }
 .black{
-  color: #000000;
+  color: var(--secondary-color);
 }
 
 @keyframes spin {
@@ -258,6 +281,7 @@ input {
   height: 50px;
   width: 120px;
   margin-left: -25px;
+  /* fill: var(--secondary-color); */
 }
 
 nav {
@@ -323,6 +347,13 @@ nav {
   object-fit: cover;
 }
 
+/* @media (prefers-color-scheme:dark) {
+  :root {
+    --primary-color:#000000;
+    --secondary-color:#ffffff
+  }
+} */
+
 .game-info-txt {
   display: flex;
   flex-direction: column;
@@ -349,7 +380,8 @@ nav {
 } */
 
 .page-container {
-  background-color: #ffffff;
+  /* change was done here */
+  background-color: var(--primary-color);
   width: 100%;
   margin: 0 auto;
   max-width: 450px;
@@ -359,18 +391,30 @@ nav {
 }
 
 .btn {
-  background-color: #000000;
-  color: #fff;
+  /* change was done here */
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   padding: 10px 25px;
   border-radius: 20px;
   font-weight: 800;
   font-size: 14px;
-  box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 1px 1px var(--secondary-color);
 }
 
 .myMenuBtn img {
   margin: 5px 0;
   cursor: pointer;
+}
+
+svg.myMenuBtn {
+  color: var(--secondary-color);
+  transition: transform 0.3s ease; /* Smooth transition */
+
+}
+
+svg.myMenuBtn:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 .see-all{
@@ -430,7 +474,7 @@ scrollbar-width: none;  /* Firefox */
   position: relative;
   border-radius: 10px;
   margin-right: 10px;
-  background: rgba(0, 0, 0, 1);
+  background: var(--secondary-color);
   -webkit-transition: 0.2s ease-in-out 0s;
 	-moz-transition   : 0.2s ease-in-out 0s;
 	-o-transition     : 0.2s ease-in-out 0s;
@@ -453,7 +497,7 @@ scrollbar-width: none;  /* Firefox */
 .recommended-game-desc{
   position: absolute;
   bottom: 10px;
-  color: #fff;
+  color: var(--primary-color);
   padding-left: 10px;
 }
 .game-tags{
@@ -466,6 +510,7 @@ scrollbar-width: none;  /* Firefox */
     -o-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     font-size: 10px;
+    color: var(--primary-color);
 }
 
 .popular-game{
@@ -488,7 +533,7 @@ scrollbar-width: none;  /* Firefox */
   position: absolute;
   top: 10px;
   width: 169px;
-  color: #fff;
+  color: var(--primary-color);
   padding: 8px;
   margin-left: 10px;
   border: 1px solid #cccccc;
@@ -518,7 +563,7 @@ scrollbar-width: none;  /* Firefox */
   top: 0;
   right: -10%;
   padding: 30px 18px;
-  background-color: #ffffff;
+  background-color: var(--primary-color);
   overflow-x: hidden;
   transition: 0.5s;
   display: flex;
@@ -541,24 +586,38 @@ scrollbar-width: none;  /* Firefox */
   display: flex;
   align-items: center;
   transition: 0.3s;
+  color: var(--primary-color);
 }
 
 .sidenav_menu img,
-.sidenav_menu svg {
+.sidenav_menu svg,
+.toggle {
   margin: 0 20px 0 30px;
 }
 
 .sidenav a {
   padding: 5px;
   opacity: 0.5;
+  color: var(--secondary-color);
+}
+
+.sidenav_menu svg:hover path {
+  fill: grey;
 }
 
 
-.sidenav a:hover, .sidenav_menu svg:hover path {
-  color: #000;
-  fill: #000;
+.sidenav a:hover,
+.sidenav_menu svg:hover path {
+  color: var(--secondary-color);
+  fill: var(--secondary-color);
   opacity: 1;
 }
+
+.toggle {
+  padding: 5px;
+  margin: 20px;
+}
+
 .closebtn-div {
   position: absolute;
   left: 55%;
@@ -566,7 +625,12 @@ scrollbar-width: none;  /* Firefox */
 }
 .closebtn {
   font-size: 40px;
-  color: #000000;
+  transition: transform 0.3s ease; /* Smooth transition */
+  color: var(--secondary-color);
+}
+
+.closebtn:hover {
+      transform: scale(1.2); 
 }
 
 .faq-btn {
@@ -587,7 +651,7 @@ scrollbar-width: none;  /* Firefox */
 .bottomnav {
   max-width: 500px;
   justify-content: space-evenly;
-  background-color: #ffffff;
+  background-color: var(--primary-color);
   padding: 10px 0 20px;
   position: sticky;
   border-radius: 15px 15px 0 0;
@@ -645,7 +709,7 @@ svg.active {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #000;
+  background-color: var(--primary-color);
   opacity: 0.5;
   width: 100%;
   behavior: smooth;
@@ -667,3 +731,49 @@ svg.active {
 .visible {
   visibility: visible;
 }
+
+/* Dark mode styles */
+.page-container-dark{
+  background-color: #292C35;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  border-radius: 50px;
+  height: 26px;
+  padding: 5px;
+  width: 50px;
+}
+
+.ball {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked  + .label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: #f1c40f;
+}
+
+.fa-sun {
+  color: #f39c12;
+}
+
