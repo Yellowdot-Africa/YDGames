@@ -22,7 +22,7 @@ menuBtn.addEventListener("click", () => {
       soverlay.style.opacity = "1";
       soverlay.style.visibility = "visible";
     });
-  
+
 
 closeBtn.forEach((btn) => {
   btn.addEventListener("click", () => {

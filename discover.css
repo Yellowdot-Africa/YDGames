@@ -1,3 +1,13 @@
+:root {
+  --primary-color:#ffffff;
+  --secondary-color:#000000;
+}
+
+.dark-theme {
+  --primary-color:#000000;
+  --secondary-color:#ffffff;
+}
+
 /* nav{
   position: static;
 } */
@@ -18,7 +28,7 @@
 }
 .search{
   padding: 10px;
-  background-color: #F5F5F5;
+  background-color: var(--primary-color);
   width: 100%;
   border-radius: 20px;
 }
@@ -30,9 +40,10 @@
   width: 100%;
 }
 .tags{
-  color: #000;
+  color: var(--secondary-color);
   padding: 5px 10px;
-  background-color: #F3F3F3;
+  /* background-color: #F3F3F3; */
+  background-color: var(--primary-color);
   margin-right: 15px;
   border-radius: 5px;
   font-size: 14px;

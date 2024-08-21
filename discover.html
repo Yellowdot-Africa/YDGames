@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Discover a whole world of games, Play for free without having to download">
   <title>Play for Fun Zone | Discover </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 
@@ -22,8 +23,9 @@
       </div>
 
 
-        <img class="myMenuBtn menu-burger" src="assets/icons/hamburger.svg" alt="" />
-
+      <svg class="myMenuBtn menu-burger" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="orange" d="M1 11H15M1 6H15M1 1H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </nav>
 
     <div class="search-bar-cont">
@@ -96,6 +98,7 @@
               <svg
                 width="18"
                 height="18"
+                fill="currentColor"
                 viewBox="0 0 18 18"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -110,6 +113,7 @@
               <svg
                 width="12"
                 height="18"
+                fill="currentColor"
                 viewBox="0 0 12 18"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -124,6 +128,7 @@
               <svg
                 width="14"
                 height="18"
+                fill="currentColor"
                 viewBox="0 0 14 18"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -138,6 +143,7 @@
               <svg
                 width="12"
                 height="17"
+                fill="currentColor"
                 viewBox="0 0 12 17"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -152,6 +158,7 @@
               <svg
                 width="16"
                 height="18"
+                fill="currentColor"
                 viewBox="0 0 16 18"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -166,6 +173,7 @@
               <svg
                 width="16"
                 height="16"
+                fill="currentColor"
                 viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -175,6 +183,14 @@
               </svg>
               Sport
             </a>
+            <div class="sidenav_menu toggle">
+              <input type="checkbox" class="checkbox" id="checkbox">
+              <label class="label" for="checkbox">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+                  <div class="ball"></div>
+              </label>
+            </div>
             <!-- <button class="sidenav_menu black">Recommended for you</button>
             <button
               class="sidenav_menu black"
@@ -205,56 +221,57 @@
   </div>
   <!-- BOTTOM NAVIGATION -->
   <div class="bottomnav flex" id="mybottomNav">
-      <a href="home.html" class="menu-home">
-        <svg
-        class="menu-home"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-        <path d="M2.36407 12.9579C1.98463 10.3208 1.79491 9.00229 2.33537 7.87495C2.87583 6.7476 4.02619 6.06234 6.32691 4.69181L7.71175 3.86687C9.80104 2.62229 10.8457 2 12 2C13.1543 2 14.199 2.62229 16.2882 3.86687L17.6731 4.69181C19.9738 6.06234 21.1242 6.7476 21.6646 7.87495C22.2051 9.00229 22.0154 10.3208 21.6359 12.9579L21.3572 14.8952C20.8697 18.2827 20.626 19.9764 19.451 20.9882C18.2759 22 16.5526 22 13.1061 22H10.8939C7.44737 22 5.72409 22 4.54903 20.9882C3.37396 19.9764 3.13025 18.2827 2.64284 14.8952L2.36407 12.9579Z"/>
-        <path d="M12 15L12 18" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        Home
-      </a>
-      <a href="categories.html" class="menu-search">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-        <path d="M17.0802 2.60005C16.3602 1.40005 15.0402 0.800049 13.6002 0.800049H6.40021C4.96021 0.800049 3.64021 1.40005 2.92021 2.60005C0.16021 6.80005 -0.43979 13.16 1.48021 14.48C3.40021 15.8 7.72021 10.04 10.0002 10.04C12.2802 10.04 16.4802 15.8 18.5202 14.48C20.4402 13.16 19.8402 6.80005 17.0802 2.60005ZM7.60021 6.80005H6.40021V8.00005H5.20021V6.80005H4.00021V5.60005H5.20021V4.40005H6.40021V5.60005H7.60021V6.80005ZM14.0802 7.40005C14.0802 8.00005 13.6002 8.48005 13.0002 8.48005C12.4002 8.48005 11.9202 8.00005 11.9202 7.40005C11.9202 6.80005 12.4002 6.32005 13.0002 6.32005C13.6002 6.32005 14.0802 6.80005 14.0802 7.40005ZM16.3602 5.00005C16.3602 5.60005 15.8802 6.08005 15.2802 6.08005C14.6802 6.08005 14.2002 5.60005 14.2002 5.00005C14.2002 4.40005 14.6802 3.92005 15.2802 3.92005C15.8802 3.92005 16.3602 4.40005 16.3602 5.00005Z" />
-          <path d="M18.3333 18.3333L16.6667 16.6667" />
-        </svg>
-        Categories
-      </a>
-      <a href="discover.html" class="active menu-search">
-        <svg
-          class=" active menu-search"
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M9.58335 17.5C13.9556 17.5 17.5 13.9556 17.5 9.58334C17.5 5.21108 13.9556 1.66667 9.58335 1.66667C5.2111 1.66667 1.66669 5.21108 1.66669 9.58334C1.66669 13.9556 5.2111 17.5 9.58335 17.5Z"/>
-          <path d="M18.3333 18.3333L16.6667 16.6667"/>
-        </svg>
-        Discover
-      </a>
-      <a href="#" class="myMenuBtn2">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="5" cy="12" r="2" />
-          <circle cx="12" cy="12" r="2" />
-          <circle cx="19" cy="12" r="2" />
-          </svg>
-        More
-        </a>
+    <a href="home.html" class="menu-home">
+      <svg
+      class="menu-home"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+      <path d="M2.36407 12.9579C1.98463 10.3208 1.79491 9.00229 2.33537 7.87495C2.87583 6.7476 4.02619 6.06234 6.32691 4.69181L7.71175 3.86687C9.80104 2.62229 10.8457 2 12 2C13.1543 2 14.199 2.62229 16.2882 3.86687L17.6731 4.69181C19.9738 6.06234 21.1242 6.7476 21.6646 7.87495C22.2051 9.00229 22.0154 10.3208 21.6359 12.9579L21.3572 14.8952C20.8697 18.2827 20.626 19.9764 19.451 20.9882C18.2759 22 16.5526 22 13.1061 22H10.8939C7.44737 22 5.72409 22 4.54903 20.9882C3.37396 19.9764 3.13025 18.2827 2.64284 14.8952L2.36407 12.9579Z"/>
+      <path d="M12 15L12 18" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Home
+    </a>
+    <a href="categories.html" class="menu-search">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+      <path d="M17.0802 2.60005C16.3602 1.40005 15.0402 0.800049 13.6002 0.800049H6.40021C4.96021 0.800049 3.64021 1.40005 2.92021 2.60005C0.16021 6.80005 -0.43979 13.16 1.48021 14.48C3.40021 15.8 7.72021 10.04 10.0002 10.04C12.2802 10.04 16.4802 15.8 18.5202 14.48C20.4402 13.16 19.8402 6.80005 17.0802 2.60005ZM7.60021 6.80005H6.40021V8.00005H5.20021V6.80005H4.00021V5.60005H5.20021V4.40005H6.40021V5.60005H7.60021V6.80005ZM14.0802 7.40005C14.0802 8.00005 13.6002 8.48005 13.0002 8.48005C12.4002 8.48005 11.9202 8.00005 11.9202 7.40005C11.9202 6.80005 12.4002 6.32005 13.0002 6.32005C13.6002 6.32005 14.0802 6.80005 14.0802 7.40005ZM16.3602 5.00005C16.3602 5.60005 15.8802 6.08005 15.2802 6.08005C14.6802 6.08005 14.2002 5.60005 14.2002 5.00005C14.2002 4.40005 14.6802 3.92005 15.2802 3.92005C15.8802 3.92005 16.3602 4.40005 16.3602 5.00005Z" />
+        <path d="M18.3333 18.3333L16.6667 16.6667" />
+      </svg>
+      Categories
+    </a>
+    <a href="discover.html" class="active menu-search">
+      <svg
+        class=" active menu-search"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M9.58335 17.5C13.9556 17.5 17.5 13.9556 17.5 9.58334C17.5 5.21108 13.9556 1.66667 9.58335 1.66667C5.2111 1.66667 1.66669 5.21108 1.66669 9.58334C1.66669 13.9556 5.2111 17.5 9.58335 17.5Z"/>
+        <path d="M18.3333 18.3333L16.6667 16.6667"/>
+      </svg>
+      Discover
+    </a>
+    <a href="#" class="myMenuBtn2">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="5" cy="12" r="2" />
+        <circle cx="12" cy="12" r="2" />
+        <circle cx="19" cy="12" r="2" />
+      </svg>
+      More
+    </a>
   </div>
 
   <script src="script.js"></script>
   <script src="game_search.js"></script>
+  <script src="darkMode.js" ></script>
 </body>
 
 </html>

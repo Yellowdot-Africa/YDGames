@@ -1,4 +1,12 @@
+:root {
+  --primary-color:#ffffff;
+  --secondary-color:#000000;
+}
 
+.dark-theme {
+  --primary-color:#000000;
+  --secondary-color:#ffffff;
+}
 /* NEW GAME CONTENTS */
 
 .see-all{
@@ -13,9 +21,9 @@
   display: block;
   position: relative;
   border-radius: 15px;
-  background: rgba(0, 0, 0, 1);
+  background: var(--secondary-color);
   height: 220px;
-  color: #ffffff;
+  color: var(--primary-color);
 }
 .hot-doggeria > img{
   border-radius: 10px;
@@ -48,9 +56,9 @@
 }
 
 .item:hover {
-  -webkit-box-shadow: inset 0px 0px 12px -2px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: inset 0px 0px 12px -2px rgba(0, 0, 0, 0.75);
-  box-shadow: inset 0px 0px 12px -2px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: inset 0px 0px 12px -2px  var(--secondary-color);
+  -moz-box-shadow: inset 0px 0px 12px -2px var(--secondary-color);
+  box-shadow: inset 0px 0px 12px -2px var(--secondary-color);
 }
 
 .item1{
