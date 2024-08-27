@@ -1,10 +1,20 @@
+:root {
+  --primary-color:#ffffff;
+  --secondary-color:#000000;
+}
+
+.dark-theme {
+  --primary-color:#000000;
+  --secondary-color:#ffffff;
+}
+
 /* body{
   background-color: #000;
 } */
 .page-container{
-  background-color: #000;
+  background-color: var(--secondary-color);
   height: 100vh;
-  color: #fff;
+  color: var(--primary-color);
   padding: 0 30px;
 }
 .page{

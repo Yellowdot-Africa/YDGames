@@ -1,3 +1,13 @@
+:root {
+  --primary-color:#ffffff;
+  --secondary-color:#000000;
+}
+
+.dark-theme {
+  --primary-color:#000000;
+  --secondary-color:#ffffff;
+}
+
 .page-container{
     height: 100vh;
     padding: 0 30px;
@@ -51,7 +61,7 @@
     border: 1px solid #5C5C5C;
     padding: 1px 20px;
     border-radius: 50px;
-    color: #000;
+    color: var(--secondary-color);
   }
 
   @keyframes fadeInOut {

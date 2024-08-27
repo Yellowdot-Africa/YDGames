@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const GET_CATEGORIES_URL = 'http://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetGamesForHomePage?displayCount=4';
         const jwtToken = localStorage.getItem('Token');
 
-        showLoadingIndicator();
+        // showLoadingIndicator();
 
         try {
             const response = await fetch(GET_CATEGORIES_URL, {
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             const data = await response.json();
             if (data && data.message === 'Success!') {
                 const games = data.data;
-                hideLoadingIndicator();
+                // hideLoadingIndicator();
                 renderSections(games);
             }
         } catch (error) {
