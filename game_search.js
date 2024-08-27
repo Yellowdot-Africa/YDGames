@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Authentication function
   async function auth() {
-    const LOGIN_URL = 'https://ydvassdp.com:5001/api/YDGames/Authorization/Login';
+    const LOGIN_URL = 'http://ydvassdp.com:5002/api/YDGames/Authorization/Login';
     try {
       const response = await fetch(LOGIN_URL, {
         method: "POST",
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function getGamesForHomePage() {
-    const GET_CATEGORIES_URL = 'https://ydvassdp.com:5001/YDGames/api/YDGames/YDGames/GetGamesForHomePage?displayCount=4';
+    const GET_CATEGORIES_URL = 'http://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetGamesForHomePage?displayCount=4';
     showLoadingIndicator();
     try {
       const response = await fetch(GET_CATEGORIES_URL, {
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function loadGameCategories() {
-    const CATEGORIES_API_URL = "https://ydvassdp.com:5001/YDGames/api/YDGames/YDGames/GetAllGames";
+    const CATEGORIES_API_URL = "http://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetAllGames";
     try {
       const response = await fetch(CATEGORIES_API_URL, {
         method: "GET",
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function loadGameData() {
-    const API_URL = "https://ydvassdp.com:5001/YDGames/api/YDGames/YDGames/GetAllGames";
+    const API_URL = "http://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetAllGames";
     try {
       const response = await fetch(API_URL, {
         method: "GET",
