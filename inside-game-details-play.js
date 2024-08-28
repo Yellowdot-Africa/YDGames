@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   await checkTokenExpiration(token);
 
   async function auth() {
-      const LOGIN_URL = 'http://ydvassdp.com:5002/api/YDGames/Authorization/Login';
+      const LOGIN_URL = 'https://ydvassdp.com:5002/api/YDGames/Authorization/Login';
       try {
           const response = await fetch(LOGIN_URL, {
               method: 'POST',
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 
   async function fetchGameDetails(gid) {
-      const BASE_URL = 'http://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetAllGames';
+      const BASE_URL = 'https://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetAllGames';
       showLoadingIndicator();
 
       try {
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       popularGamesContainer.innerHTML = '<div class="loading-indicator"></div>';
       recommendedGamesContainer.innerHTML = '<div class="loading-indicator"></div>';
 
-      const BASE_URL = 'http://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetGamesInCategory';
+      const BASE_URL = 'https://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetGamesInCategory';
 
       fetch(`${BASE_URL}?category=${category}`, {
           method: 'GET',
