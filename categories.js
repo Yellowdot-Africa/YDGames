@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Function to authenticate and get a new token
     async function auth() {
-        const LOGIN_URL = 'https://ydvassdp.com:5002/api/YDGames/Authorization/Login';
+        const LOGIN_URL = 'https://ydvassdp.com:5001/api/YDGames/Authorization/Login';
         try {
             const response = await fetch(LOGIN_URL, {
                 method: "POST",
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     async function getCategories() {
-        const GET_CATEGORIES_URL = 'https://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetAllGames';
+        const GET_CATEGORIES_URL = 'https://ydvassdp.com:5001/YDGames/api/YDGames/YDGames/GetAllGames';
         const jwtToken = localStorage.getItem('Token');
         showLoadingIndicator();
 

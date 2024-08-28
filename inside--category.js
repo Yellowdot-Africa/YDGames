@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     const loadingIndicator = document.getElementById('loading-indicator');
     const categoryTitleElement = document.querySelector("nav h3");
 
-    const LOGIN_URL = 'https://ydvassdp.com:5002/api/YDGames/Authorization/Login';
-    const BASE_URL = 'https://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetGamesInCategory';
+    const LOGIN_URL = 'https://ydvassdp.com:5001/api/YDGames/Authorization/Login';
+    const BASE_URL = 'https://ydvassdp.com:5001/YDGames/api/YDGames/YDGames/GetGamesInCategory';
     const username = "yd_games_sa";
     const password = "password";
     let token = localStorage.getItem('Token');
