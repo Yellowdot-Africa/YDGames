@@ -46,6 +46,12 @@ body{
   position: absolute;
   bottom: 0;
 }
+.item-img{
+  width: 130px;
+  height: 130px;
+  border-radius: 10px;
+  object-fit: cover;
+}
 
 .item:hover {
   -webkit-box-shadow: inset 0px 0px 12px -2px var(--secondary-color);

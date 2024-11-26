@@ -70,3 +70,9 @@
 .item3{
   background: #6EE8C3;
 }
+.item-img{
+  width: 130px;
+  height: 130px;
+  border-radius: 10px;
+  object-fit: cover;
+}

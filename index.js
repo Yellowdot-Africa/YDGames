@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Function to authenticate and get a new token
     async function auth() {
-        const LOGIN_URL = 'https://ydvassdp.com:5001/api/YellowdotGames/Authorization/Login';
+        const LOGIN_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/Authorization/Login';
         try {
             const response = await fetch(LOGIN_URL, {
                 method: "POST",
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     async function getGamesForHomePage() {
-        const GET_CATEGORIES_URL = 'https://ydvassdp.com:5001/YDGames/api/YellowdotGames/YDGames/GetGamesForHomePage?displayCount=4';
+        const GET_CATEGORIES_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/YDGames/GetGamesForHomePage?displayCount=4';
         const jwtToken = localStorage.getItem('Token');
 
         showLoadingIndicator();
@@ -120,7 +120,9 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
             });
             const data = await response.json();
-            if (data && data.message === 'Success!') {
+            console.log(data);
+            
+            if (data && data.message === 'OK') {
                 const games = data.data;
                 hideLoadingIndicator();
                 renderSections(games);
@@ -130,10 +132,13 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
+      
     function renderSections(games) {
-        const getBackSection = filterAndLimitGames(games, 3);
-        const gamesYouMightLikeSection = filterAndLimitGamesByCategory(['Sports'], games, 4);
-        const popularSection = filterAndLimitGamesByCategory(['Puzzles'], games, 4);
+        const getBackSection = filterAndLimitGames(games, 4);
+
+        const gamesYouMightLikeSection = filterAndLimitGamesByCategory(['adventure', 'puzzle', 'arts', 'education'], games, 4);
+        
+        const popularSection = filterAndLimitGamesByCategory(['strategy', 'sport', 'arcade', 'action'], games, 4);
 
         renderGames(getBackSection, '.getback .list-x');
         renderRecommended(gamesYouMightLikeSection, '.recommended .list-x');
@@ -144,8 +149,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         return games.slice(0, limit);
     }
 
-    function filterAndLimitGamesByCategory(categories, games, limit) {
-        const filteredGames = games.filter(game => categories.includes(game.category));
+    function filterAndLimitGamesByCategory(categories, games, limit) {        
+        const filteredGames = games.filter(game => categories.includes(game.category[0]));
         return filteredGames.slice(0, limit);
     }
 
@@ -155,8 +160,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         gamesList.forEach(game => {
             const gameInfoHTML = `
                 <div>
-                    <a href="${escapeHTML(game.playUrl)}" class="item item1">
-                        <img src="${escapeHTML(game.thumbnailUrl)}" alt="" />
+                    <a href="${escapeHTML(game.playUrl)}" class="item">
+                        <img class="item-img" src="${escapeHTML(game.imageUrl)}" alt="" />
                     </a>
                     <p>${escapeHTML(game.title)}</p>
                 </div>
@@ -172,13 +177,11 @@ document.addEventListener('DOMContentLoaded', async function () {
             const gameInfoHTML = `
                 <a href="${escapeHTML(game.playUrl)}" class="recommended-game">
                     <img class="staricon" src="assets/staricon.svg" alt="star" />
-                    <img class="img" src="${escapeHTML(game.thumbnailUrl)}" alt="${escapeHTML(game.title)}" />
+                    <img class="img" src="${escapeHTML(game.imageUrl)}" alt="${escapeHTML(game.name)}" />
                     <div class="recommended-game-desc">
                         <h4>${escapeHTML(game.title)}</h4>
                         <div>
-                            <button class="game-tags">Strategy</button>
-                            <button class="game-tags">Action</button>
-                            <button class="game-tags">Adventure</button>
+                            <button class="game-tags">${game.category[0]}</button>
                         </div>
                     </div>
                 </a>
@@ -191,15 +194,15 @@ document.addEventListener('DOMContentLoaded', async function () {
         const container = document.querySelector(selector);
         container.innerHTML = '';
         gamesList.forEach(game => {
+            
             const gameInfoHTML = `
                 <a href="${escapeHTML(game.playUrl)}" class="popular-game">
                     <img class="staricon" src="assets/staricon.svg" alt="" />
-                    <img class="img" src="${escapeHTML(game.thumbnailUrl)}" alt="${escapeHTML(game.title)}" />
+                    <img class="img" src="${escapeHTML(game.imageUrl)}" alt="${escapeHTML(game.title)}" />
                     <div class="popular-game-desc">
                         <h4>${escapeHTML(game.title)}</h4>
                         <div>
-                            <button class="game-tags">${game.category}</button>
-                            <button class="game-tags">Strategy</button>
+                            <button class="game-tags">${game.category[0]}</button>
                         </div>
                     </div>
                 </a>

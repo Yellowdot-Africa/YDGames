@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     const loadingIndicator = document.getElementById('loading-indicator');
     const categoryTitleElement = document.querySelector("nav h3");
 
-    const LOGIN_URL = 'https://ydvassdp.com:5001/api/YellowdotGames/Authorization/Login';
-    const BASE_URL = 'https://ydvassdp.com:5001/YDGames/api/YellowdotGames/YDGames/GetGamesInCategory';
+    const LOGIN_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/Authorization/Login';
+    const BASE_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/YDGames/GetGamesInCategory';
     const username = "yd_games_sa";
     const password = "password";
     let token = localStorage.getItem('Token');
@@ -112,6 +112,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         pageContainer.classList.remove("hidden");
     }
 
+    function capitalizeFirstLetter(string) {
+        if (!string) return string; // Return if the string is empty
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
+
     async function filterGamesByCategory(category) {
         showLoadingIndicator();
         try {
@@ -127,8 +132,11 @@ document.addEventListener('DOMContentLoaded', async function () {
             const games = data.data;
 
             if (games && games.length > 0) {
+                console.log(games);
+                
                 const categoryName = games[0].category;
-                categoryTitleElement.textContent = `${categoryName} Games`;
+                
+                categoryTitleElement.textContent = `${capitalizeFirstLetter(categoryName[0])} Games`;
 
                 const newGames = games.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10);
                 const popularGames = games.sort((a, b) => b.played - a.played).slice(11, 21);
@@ -136,7 +144,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 renderGames(newGames, '.new .games-container');
                 renderGames(popularGames, '.popular .games-container');
-                renderGames(recommendedGames, '.for-you .games-container');
+                // renderGames(recommendedGames, '.for-you .games-container');
             }
             hideLoadingIndicator();
         } catch (error) {
@@ -150,7 +158,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         gamesList.forEach(game => {
             const gameInfoHTML = `
                 <div class="item" onclick="location.href='inside-game-details-play.html?gid=${escapeHTML(game.gameId)}'">
-                    <img class="item-img" src="${escapeHTML(game.thumbnailUrl)}" alt="${escapeHTML(game.title)}" />
+                    <img class="item-img" src="${escapeHTML(game.imageUrl)}" alt="${escapeHTML(game.title)}" />
                     <div class="flex">
                         <p><b>${escapeHTML(game.title)}</b></p>
                     </div>

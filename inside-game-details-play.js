@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   await checkTokenExpiration(token);
 
   async function auth() {
-      const LOGIN_URL = 'https://ydvassdp.com:5002/api/YDGames/Authorization/Login';
+      const LOGIN_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/Authorization/Login';
       try {
           const response = await fetch(LOGIN_URL, {
               method: 'POST',
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   function getGameIdFromQueryParam() {
       const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get('gid');
+      return Number(urlParams.get('gid'));
   }
 
   function showLoadingIndicator() {
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 
   async function fetchGameDetails(gid) {
-      const BASE_URL = 'https://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetAllGames';
+      const BASE_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/YDGames/GetAllGames';
       showLoadingIndicator();
 
       try {
@@ -118,7 +118,20 @@ document.addEventListener('DOMContentLoaded', async function () {
           });
           const data = await response.json();
           const games = data.data;
-          const filteredGame = games.find(game => game.gameId === gid);
+          console.log(games, 'trabaye');
+        //   const filteredGame = games.find(game => game.gameId == gid);
+        const filteredGame = games.find(game => {
+            console.log(game);
+            console.log(game.gameId);
+            
+            if (game) {
+                console.log('Mama');
+                
+            }
+            
+        });
+          console.log(filteredGame, 'here');
+          
           const categoryHTML = `<span class="game-tag">${escapeHTML(filteredGame.category)}</span>`;
           const fullDescription = filteredGame.description;
           const words = filteredGame.description.split(' ');
@@ -155,10 +168,18 @@ document.addEventListener('DOMContentLoaded', async function () {
           `;
 
           gameDetailContainer.innerHTML = gameDetailHTML;
+          
           filterGamesByCategory(filteredGame.category);
-          hideLoadingIndicator();
+          console.log(filterGamesByCategory, 'debe');
+          
+        //   if (data && data.message === 'OK') {
+        //         const games = data.data;
+        //         hideLoadingIndicator();
+        //         renderSections(games);
+        //    }
           setupSeeMoreListener();
       } catch (error) {
+        console.log(error);
           console.error('Error fetching game details:', error);
       }
   }
@@ -181,7 +202,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       popularGamesContainer.innerHTML = '<div class="loading-indicator"></div>';
       recommendedGamesContainer.innerHTML = '<div class="loading-indicator"></div>';
 
-      const BASE_URL = 'https://ydvassdp.com:5002/YDGames/api/YDGames/YDGames/GetGamesInCategory';
+      const BASE_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/YDGames/GetGamesInCategory';
 
       fetch(`${BASE_URL}?category=${category}`, {
           method: 'GET',
@@ -242,6 +263,8 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 
   const gid = getGameIdFromQueryParam();
+  console.log(gid);
+  
 
   if (gid) {
       fetchGameDetails(gid);

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Function to authenticate and get a new token
     async function auth() {
-        const LOGIN_URL = 'https://ydvassdp.com:5001/api/YellowdotGames/Authorization/Login';
+        const LOGIN_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/Authorization/Login';
         try {
             const response = await fetch(LOGIN_URL, {
                 method: "POST",
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     async function getCategories() {
-        const GET_CATEGORIES_URL = 'https://ydvassdp.com:5001/YDGames/api/YellowdotGames/YDGames/GetAllGames';
+        const GET_CATEGORIES_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/YDGames/GetAllGames';
         const jwtToken = localStorage.getItem('Token');
         showLoadingIndicator();
 
@@ -120,22 +120,41 @@ document.addEventListener('DOMContentLoaded', async function () {
             if (data && data.message === 'Success!') {
                 const games = data.data;
                 hideLoadingIndicator();
+
+                [
+                    "puzzle",
+                    "strategy",
+                    "adventure",
+                    "action",
+                    "arcade",
+                    "kids",
+                    "educative",
+                    "sports",
+                    "stratgey",
+                    "aracade",
+                    "racing",
+                    "art",
+                    "education",
+                    "sport",
+                    "arts",
+                    "racing"
+                  ]
                 // Filtered games based on category
-                const sportsCategory = filterAndLimitGamesByCategory('Sports', games, 6);
-                const arcadeCategory = filterAndLimitGamesByCategory('Arcade', games, 6);
-                const classicsCategory = filterAndLimitGamesByCategory('Classics', games, 6);
-                const juniorCategory = filterAndLimitGamesByCategory('Junior', games, 6);
-                const adventureCategory = filterAndLimitGamesByCategory('Adventure', games, 6);
-                const puzzlesCategory = filterAndLimitGamesByCategory('Puzzles', games, 6);
-                const strategyCategory = filterAndLimitGamesByCategory('Strategy', games, 6);
-                const boardCategory = filterAndLimitGamesByCategory('Board', games, 6);
-                const jumboCategory = filterAndLimitGamesByCategory('Strategy', games, 1);
+                const jumboCategory = filterAndLimitGamesByCategory('action', games, 1);
+                const sportsCategory = filterAndLimitGamesByCategory('sports', games, 6);
+                const arcadeCategory = filterAndLimitGamesByCategory('arcade', games, 6);
+                const artsCategory = filterAndLimitGamesByCategory('art', games, 6);
+                const kidsCategory = filterAndLimitGamesByCategory('kids', games, 6);
+                const adventureCategory = filterAndLimitGamesByCategory('adventure', games, 6);
+                const puzzlesCategory = filterAndLimitGamesByCategory('puzzle', games, 6);
+                const strategyCategory = filterAndLimitGamesByCategory('strategy', games, 6);
+                const educationCategory = filterAndLimitGamesByCategory('education', games, 6);
 
                 renderGames(adventureCategory, '.new-game-section .adventure-category .getback');
                 renderGames(arcadeCategory, '.new-game-section .arcade-category .getback');
-                renderGames(boardCategory, '.new-game-section .board-category .getback');
-                renderGames(classicsCategory, '.new-game-section .classics-category .getback');
-                renderGames(juniorCategory, '.new-game-section .junior-category .getback');
+                renderGames(educationCategory, '.new-game-section .board-category .getback');
+                renderGames(artsCategory, '.new-game-section .classics-category .getback');
+                renderGames(kidsCategory, '.new-game-section .junior-category .getback');
                 renderGames(puzzlesCategory, '.new-game-section .puzzle-category .getback');
                 renderGames(sportsCategory, '.new-game-section .sports-category .getback');
                 renderGames(strategyCategory, '.new-game-section .strategy-category .getback');
@@ -169,7 +188,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     // }
 
     function filterAndLimitGamesByCategory(categories, games, limit) {
-        const filteredGames = games.filter(game => categories.includes(game.category));
+        const filteredGames = games.filter(game => categories.includes(game.category[0]));
+        console.log(filteredGames);
+        
         return filteredGames.slice(0, limit);
     }
 
@@ -179,8 +200,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (gamesList.length > 0) {
             const headerHTML = `
                 <div class="game-header">
-                    <p>${gamesList[0].category}</p>
-                    <a href="/inside--category.html?category=${gamesList[0].category}" class="see-all">See All</a>
+                    <p>${gamesList[0].category[0]}</p>
+                    <a href="/inside--category.html?category=${gamesList[0].category[0]}" class="see-all">See All</a>
                 </div>
                 <div class="list-x"></div>
             `;
@@ -191,8 +212,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             gamesList.forEach(game => {
                 const gameInfoHTML = `
                     <div>
-                        <a href="${escapeHTML(game.playUrl)}" class="item item1">
-                            <img src="${escapeHTML(game.thumbnailUrl)}" alt="" />
+                        <a href="${escapeHTML(game.playUrl)}" class="item">
+                            <img class="item-img" src="${escapeHTML(game.imageUrl)}" alt="" />
                         </a>
                         <p>${escapeHTML(game.title)}</p>
                     </div>
@@ -208,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         gamesList.forEach(game => {
             const gameInfoHTML = `
                 <a href="${escapeHTML(game.playUrl)}" class="hot-doggeria">
-                    <img class="w-100" src="${escapeHTML(game.thumbnailUrl)}" alt="${escapeHTML(game.title)}">
+                    <img class="w-100" src="${escapeHTML(game.imageUrl)}" alt="${escapeHTML(game.title)}">
                     <div class="new-game-desc">
                         <h3>${escapeHTML(game.title)}</h3>
                         <div class="flex">

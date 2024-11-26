@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Authentication function
   async function auth() {
-    const LOGIN_URL = 'https://ydvassdp.com:5001/api/YellowdotGames/Authorization/Login';
+    const LOGIN_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/Authorization/Login';
     try {
       const response = await fetch(LOGIN_URL, {
         method: "POST",
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function getGamesForHomePage() {
-    const GET_CATEGORIES_URL = 'https://ydvassdp.com:5001/YDGames/api/YellowdotGames/YDGames/GetGamesForHomePage?displayCount=4';
+    const GET_CATEGORIES_URL = 'https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/YDGames/GetGamesForHomePage?displayCount=4';
     showLoadingIndicator();
     try {
       const response = await fetch(GET_CATEGORIES_URL, {
@@ -137,11 +137,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
       const data = await response.json();
-      if (data && data.message === 'Success!') {
+      if (data && data.message === 'OK') {
         hideLoadingIndicator();
         const games = data.data;
-        const gamesYouMightLikeSection = filterAndLimitGamesByCategory('Classics', games, 4);
-        const popularSection = filterAndLimitGamesByCategory('Puzzles', games, 4);
+        const gamesYouMightLikeSection = filterAndLimitGamesByCategory('action', games, 4);
+        console.log(gamesYouMightLikeSection);
+        const popularSection = filterAndLimitGamesByCategory('sport', games, 4);
         renderGames(gamesYouMightLikeSection, '.recommended .list-x', renderRecommendedGame);
         renderGames(popularSection, '.popular .pop-list', renderPopularGame);
       }
@@ -150,9 +151,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function filterAndLimitGamesByCategory(category, games, limit) {
-    return games.filter(game => game.category === category).slice(0, limit);
-  }
+  // function filterAndLimitGamesByCategory(category, games, limit) {
+  //   return games.filter(game => game.category === category).slice(0, limit);
+  // }
+  function filterAndLimitGamesByCategory(categories, games, limit) {
+    const filteredGames = games.filter(game => categories.includes(game.category[0]));
+    return filteredGames.slice(0, limit);
+}
 
   function renderGames(gamesList, selector, renderFunction) {
     const container = document.querySelector(selector);
@@ -164,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const gameInfoHTML = `
       <a href="${escapeHTML(game.playUrl)}" class="recommended-game">
         <img class="staricon" src="assets/staricon.svg" alt="star" />
-        <img class="img" src="${escapeHTML(game.thumbnailUrl)}" alt="${escapeHTML(game.title)}" />
+        <img class="img" src="${escapeHTML(game.imageUrl)}" alt="${escapeHTML(game.title)}" />
         <div class="recommended-game-desc">
           <h4>${escapeHTML(game.title)}</h4>
           <div>
@@ -182,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const gameInfoHTML = `
       <a href="${escapeHTML(game.playUrl)}" class="popular-game">
         <img class="staricon" src="assets/staricon.svg" alt="" />
-        <img class="img" src="${escapeHTML(game.thumbnailUrl)}" alt="${escapeHTML(game.title)}" />
+        <img class="img" src="${escapeHTML(game.imageUrl)}" alt="${escapeHTML(game.title)}" />
         <div class="popular-game-desc">
           <h4>${escapeHTML(game.title)}</h4>
           <div>
@@ -196,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function loadGameCategories() {
-    const CATEGORIES_API_URL = "https://ydvassdp.com:5001/YDGames/api/YellowdotGames/YDGames/GetAllGames";
+    const CATEGORIES_API_URL = "https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/YDGames/GetAllGames";
     try {
       const response = await fetch(CATEGORIES_API_URL, {
         method: "GET",
@@ -227,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function loadGameData() {
-    const API_URL = "https://ydvassdp.com:5001/YDGames/api/YellowdotGames/YDGames/GetAllGames";
+    const API_URL = "https://onlinetriviaapi.ydplatform.com:1990/api/YellowdotGames/YDGames/GetAllGames";
     try {
       const response = await fetch(API_URL, {
         method: "GET",
@@ -270,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const gameInfoHTML = `
           <div class="game-info" onclick="location.href='inside-game-details-play.html?gid=${game.gameId}'">
             <div class="game-img-div">
-              <img class="game-img" src="${escapeHTML(game.thumbnailUrl)}" alt="${escapeHTML(game.title)}" />
+              <img class="game-img" src="${escapeHTML(game.imageUrl)}" alt="${escapeHTML(game.title)}" />
             </div>
             <div class="game-info-txt">
               <h3>${escapeHTML(game.title)}</h3>
