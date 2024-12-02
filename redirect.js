@@ -80,7 +80,7 @@ async function checkUserStatus(decodedCli, sid) {
 // Function to handle user status response
 function handleUserStatus(data, decodedCli, sid) {
     if (data?.status === 200 && data.data?.State === "Active") {
-        window.location.href = "index.html"; // Redirect to index.html
+        window.location.href = "home.html"; // Redirect to index.html
     } else {
         const message = "Inactive Subscription. Kindly subscribe to enjoy the service.";
         showMessageAndRedirect(message, `http://doi.dep.mtn.co.za/service/7551?ext_ref=123456776`);
