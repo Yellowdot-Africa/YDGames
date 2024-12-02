@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .error-message {
+            color: red;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Oops! Something went wrong.</h1>
+    <p class="error-message" id="errorMessage"></p>
+    <!-- <a href="redirect.html">Go Back</a> -->
+    <script>
+        // Display the error message passed via query parameters
+        const params = new URLSearchParams(window.location.search);
+        const message = params.get('error');
+        if (message) {
+            document.getElementById('errorMessage').textContent = message;
+        }
+    </script>
+</body>
+</html>
